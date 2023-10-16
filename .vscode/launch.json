@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/samueljose/design patterns p1/DesignPatternsProject1",
+      "program": "/Users/samueljose/design patterns p1/DesignPatternsProject1/build/Debug/outDebug"
+    }
+  ]
+}

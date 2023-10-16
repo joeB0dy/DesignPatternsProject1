@@ -1,15 +1,14 @@
-/*
+//*
 #include <iostream>
 #include <string>
 using namespace std;
 
 class AbstractPanel {
-    private:
-    string panelType = "";
+
     public:
     //virtual ~AbstractPanel() {}
-    AbstractPanel() {panelType = "AbstractPanel";}  //default constructor.
-    virtual string Panel() { return panelType = "This is the abstract panel.";}
+    AbstractPanel() {}  //default constructor.
+    virtual string Panel() { return "This is the abstract panel.";}
 };
 class W10Panel: public AbstractPanel {
     public:
@@ -70,4 +69,4 @@ class W23Textbox: public AbstractTextbox {
     string Textbox() override{ return "Word 2023 Textbox";} //declare overide upon call with ::
 };
 
-*/
+//*/

@@ -1,4 +1,4 @@
-/*
+//*
 #include <iostream>
 #include <string>
 #include "Product.h"
@@ -14,20 +14,13 @@ virtual AbstractPanel *createPanel() = 0;
 virtual AbstractButton *createButton()  = 0;
 virtual AbstractTextbox *createTextbox() = 0;
 
+string WordOperation() {
+    string result;
+
+}
 };
 
-class WordClient {
-   
-   //AbstractFactory factory;
-    public: 
-    //AbstractFactory factory;
-    void createWord(string type) {
-        if(type == "Word 90"){
-            AbstractFactory factory = Word90Factory->getInstance();
-        }
-    }
 
-};
 
 //concrete Factory. 
 //These would be singleton factories that would only call themselves.
@@ -37,7 +30,7 @@ class Word90Factory: public AbstractFactory {
     Word90Factory(){cout << "Word 1990 Factory Created" << endl;};      //private default constructor
     public: 
     static Word90Factory *getInstance() {   //points to this specific instance.
-        if(instance ==NULL)
+        if(!instance)
         {
             instance = new Word90Factory();
         }
@@ -55,7 +48,7 @@ class Word00Factory: public AbstractFactory {
     Word00Factory(){cout << "Word 2000 Factory Created" <<endl;}
     public:
         static Word00Factory *getInstance() {   //points to this specific instance.
-        if(instance ==NULL)
+        if(!instance)
         {
             instance = new Word00Factory();
         }
@@ -73,7 +66,7 @@ class Word10Factory: public AbstractFactory {
     Word10Factory(){cout << "Word 2010 Factory Created" <<endl;}
     public:
         static Word10Factory *getInstance() {   //points to this specific instance.
-        if(instance ==NULL)
+        if(!instance)
         {
             instance = new Word10Factory();
         }
@@ -89,7 +82,7 @@ class Word23Factory: public AbstractFactory {
     Word23Factory(){cout << "Word 2023 Factory Created" <<endl;}
     public:
         static Word23Factory *getInstance() {   //points to this specific instance.
-        if(instance ==NULL)
+        if(!instance)
         {
             instance = new Word23Factory();
         }
@@ -101,10 +94,15 @@ class Word23Factory: public AbstractFactory {
 
 };
 
-
+//Initialize pointers to 0 so on first call in main it would be initialized for getInstance().
+Word90Factory *Word90Factory::instance =0;
+Word00Factory *Word00Factory::instance =0;
+Word10Factory *Word10Factory::instance =0;
+Word23Factory *Word23Factory::instance =0;
 
 int main() {
 
+    Word90Factory *factory1 = factory1->getInstance();
     
     system("pause");
     return 0;
@@ -118,7 +116,7 @@ Implementing the product stuff. fucking around with it. Yet to test it. Bout to 
 eat some coochie today or soon hopefully >:)
 get the abstract factory stuff implemented by saturday
 
-/*AbstractPanel createPanel(string type);
+AbstractPanel createPanel(string type);
 AbstractTextbox createTextbox();
 AbstractButton createButton();*/
 
