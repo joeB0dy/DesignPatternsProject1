@@ -12,10 +12,12 @@ class AbstractPanel {
 };
 class W10Panel: public AbstractPanel {
     public:
+    W10Panel() {}
     string Panel() override { return "Word 2010 Panel";}//declare overide upon call with ::
 };
 class W90Panel: public AbstractPanel {
     public:
+    W90Panel() {}
     string Panel() override{ return "Word 1990 Panel";}//declare overide upon call with ::
     };
 class W00Panel: public AbstractPanel {

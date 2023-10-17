@@ -9,15 +9,11 @@ class AbstractFactory {
 
 public:
 
-AbstractFactory() {cout <<"Abstracted Factory" <<endl;}
+AbstractFactory() {cout << "Abstract Factory Called." <<endl;}
 virtual AbstractPanel *createPanel() = 0;
 virtual AbstractButton *createButton()  = 0;
 virtual AbstractTextbox *createTextbox() = 0;
 
-string WordOperation() {
-    string result;
-
-}
 };
 
 
@@ -65,11 +61,12 @@ class Word10Factory: public AbstractFactory {
     static Word10Factory *instance;
     Word10Factory(){cout << "Word 2010 Factory Created" <<endl;}
     public:
-        static Word10Factory *getInstance() {   //points to this specific instance.
+    static Word10Factory *getInstance() {   //points to this specific instance.
         if(!instance)
         {
             instance = new Word10Factory();
         }
+
         return instance;
     }
     AbstractPanel *createPanel() override {return new W10Panel();}                //how to override
@@ -100,24 +97,59 @@ Word00Factory *Word00Factory::instance =0;
 Word10Factory *Word10Factory::instance =0;
 Word23Factory *Word23Factory::instance =0;
 
+
 int main() {
 
-    Word90Factory *factory1 = factory1->getInstance();
+    // Create instances of the factories
+    Word90Factory *factory90 = Word90Factory::getInstance();
+    // Create instances of the concrete classes using the factories
+    AbstractPanel *panel = factory90->createPanel();
+    AbstractButton *button = factory90->createButton();
+    AbstractTextbox *textbox = factory90->createTextbox();
+
+    // Word90 stuff. could've defined in abstractFactory. made basically boilerplate code.
+    cout << panel->Panel() << endl;
+    cout << button->Button() << endl;
+    cout << textbox->Textbox() << endl << endl;
+    //word 00 stuff
+    Word00Factory *factory00 = Word00Factory::getInstance();
+
+
+    panel = factory00->createPanel();
+    button = factory00->createButton();
+    textbox = factory00->createTextbox();
+
+    cout << panel->Panel() << endl;
+    cout << button->Button() << endl;
+    cout << textbox->Textbox() << endl << endl;
+    
+    //Word 10 Stuff
+    Word10Factory *factory10 = Word10Factory::getInstance();
+   
+    panel = factory10->createPanel();
+    button = factory10->createButton();
+    textbox = factory10->createTextbox();
+
+    cout << panel->Panel() << endl;
+    cout << button->Button() << endl;
+    cout << textbox->Textbox() << endl << endl;
+
+    //Word23 Stuff
+    Word23Factory *factory23 = Word23Factory::getInstance();
+    panel = factory23->createPanel();
+    button = factory23->createButton();
+    textbox = factory23->createTextbox();
+
+    cout << panel->Panel() << endl;
+    cout << button->Button() << endl;
+    cout << textbox->Textbox() << endl << endl;
+    
+    // delete the instances
+    delete panel;
+    delete button;
+    delete textbox;
+
     
     system("pause");
     return 0;
 }
-
-
-/*  DEVELOPMENT NOTES TO SELF:
-
-10/13/2023
-Implementing the product stuff. fucking around with it. Yet to test it. Bout to go on a date rq. I'm tryna 
-eat some coochie today or soon hopefully >:)
-get the abstract factory stuff implemented by saturday
-
-AbstractPanel createPanel(string type);
-AbstractTextbox createTextbox();
-AbstractButton createButton();*/
-
-//*/
